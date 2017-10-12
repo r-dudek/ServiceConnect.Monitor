@@ -102,7 +102,9 @@ namespace ServiceConnect.Monitor
 
             var webAppConfig = new AuditConfig(_container);
 
-            _webApp = WebApp.Start("http://*:" + System.Configuration.ConfigurationManager.AppSettings["Port"], app => webAppConfig.Configuration(app));
+            _webApp = WebApp.Start("https://*:" + System.Configuration.ConfigurationManager.AppSettings["Port"], app => webAppConfig.Configuration(app));
+
+            
 
             var auditHub = GlobalHost.ConnectionManager.GetHubContext<AuditHub>();
             var errorHub = GlobalHost.ConnectionManager.GetHubContext<ErrorHub>();
